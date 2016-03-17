@@ -37,7 +37,6 @@ public class BallDemo
         ArrayList<BouncingBall> arrayBolas = new ArrayList<>();
 
         // crate and show the balls
-        BouncingBall bola = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
         for(int i = 0; i < numeroBolas; i++)
         {
             Random aleatorio = new Random();
@@ -50,9 +49,9 @@ public class BallDemo
             int x =  aleatorio.nextInt(220);
             int y =  aleatorio.nextInt(210);
 
-            bola = new BouncingBall(x, y, radio, new Color(red,green,blue), ground, myCanvas);
-            arrayBolas.add(bola);
-            bola.draw();
+
+            arrayBolas.add(new BouncingBall(x, y, radio, new Color(red,green,blue), ground, myCanvas));
+            arrayBolas.get(i).draw();
         }
 
         // make them bounce
