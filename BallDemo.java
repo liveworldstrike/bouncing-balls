@@ -47,8 +47,8 @@ public class BallDemo
             int green =  aleatorio.nextInt(256);
             int blue =  aleatorio.nextInt(256);
 
-            int x =  aleatorio.nextInt(240);
-            int y =  aleatorio.nextInt(400);
+            int x =  aleatorio.nextInt(220);
+            int y =  aleatorio.nextInt(210);
 
             bola = new BouncingBall(x, y, radio, new Color(red,green,blue), ground, myCanvas);
             arrayBolas.add(bola);
