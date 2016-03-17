@@ -37,8 +37,8 @@ public class BallDemo
         ArrayList<BouncingBall> arrayBolas = new ArrayList<>();
 
         // crate and show the balls
-        
-       for(int i = 0; i < numeroBolas; i++)
+        BouncingBall bola = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
+        for(int i = 0; i < numeroBolas; i++)
         {
             Random aleatorio = new Random();
             int radio =  aleatorio.nextInt(100);
@@ -54,16 +54,18 @@ public class BallDemo
             arrayBolas.add(bola);
             bola.draw();
         }
-        
+
         // make them bounce
         boolean finished =  false;
         while(!finished) {
             myCanvas.wait(50);           // small delay
-            ball.move();
-            ball2.move();
-            // stop once ball has travelled a certain distance on x axis
-            if(ball.getXPosition() >= 550 || ball2.getXPosition() >= 550) {
-                finished = true;
+            for(BouncingBall elemento : arrayBolas)
+            {
+                elemento.move();
+                // stop once ball has travelled a certain distance on x axis
+                if(elemento.getXPosition() >= 550) {
+                    finished = true;
+                }
             }
         }
     }
