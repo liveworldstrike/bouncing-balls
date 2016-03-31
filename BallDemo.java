@@ -49,7 +49,6 @@ public class BallDemo
             int x =  aleatorio.nextInt(220);
             int y =  aleatorio.nextInt(210);
 
-
             arrayBolas.add(new BouncingBall(x, y, radio, new Color(red,green,blue), ground, myCanvas));
             arrayBolas.get(i).draw();
         }
@@ -68,22 +67,21 @@ public class BallDemo
             }
         }
     }
-    
+
     /**
      * dibujar un rectángulo sin relleno en la pantalla y dentro tantas bolas como se indiquen 
      * 
      */
     public void boxBounce(int numeroBolas)
     {
-        int ground = 400;   // position of the ground line
 
         myCanvas.setVisible(true);
 
         // draw the ground
-        myCanvas.drawLine(50, 400, 550, 400);
-        myCanvas.drawLine(50, 400, 50, 0);
-        myCanvas.drawLine(550, 0, 50, 0);
-        myCanvas.drawLine(550, 0, 550, 400);
+        myCanvas.drawLine(50, 100, 550, 100);//superior
+        myCanvas.drawLine(50, 400, 550, 400);//abaj
+        myCanvas.drawLine(50, 400, 50, 100);//izq
+        myCanvas.drawLine(550,400, 550, 100);//derecha
         //array que guarda las bolas
         ArrayList<BoxBall> arrayBolas = new ArrayList<>();
 
@@ -100,8 +98,7 @@ public class BallDemo
             int x =  aleatorio.nextInt(220);
             int y =  aleatorio.nextInt(210);
 
-
-            arrayBolas.add(new BoxBall(x, y, radio, new Color(red,green,blue), ground, myCanvas));
+            arrayBolas.add(new BoxBall(x, y, radio, new Color(red,green,blue),50,400,100,550,myCanvas));
             arrayBolas.get(i).draw();
         }
 
@@ -113,11 +110,10 @@ public class BallDemo
             {
                 elemento.move();
                 // stop once ball has travelled a certain distance on x axis
-                if(elemento.getXPosition() >= 550) {
-                    finished = true;
-                }
+
             }
         }
+
     }
-    
+
 }

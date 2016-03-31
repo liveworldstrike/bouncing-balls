@@ -13,6 +13,7 @@ public class BoxBall
 {
     private Canvas canvas;
     private int ySpeed = 1;
+    private int xSpeed = 1;
     private int ballDegradation = 2;
     private Ellipse2D.Double circle;
     private Color color;
@@ -20,7 +21,10 @@ public class BoxBall
     private int xPosition;
     private int yPosition;
     private final int groundPosition;      // y position of ground
-
+   private int izquierda;
+   private int derecha;
+   private int arriba;
+   private int abajo;
     /**
      * Constructor for objects of class BouncingBall
      *
@@ -32,13 +36,13 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall (int xPos, int yPos, int ballDiameter, Color ballColor,
-    int groundPos, Canvas drawingCanvas)
+    int arriba,int abajo,int izquierda,int derecha, Canvas drawingCanvas)
     {
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
-        groundPosition = groundPos;
+        groundPosition = abajo;
         canvas = drawingCanvas;
     }
 
@@ -68,27 +72,34 @@ public class BoxBall
         erase();
 
         // compute new position
+        ySpeed+=0;
         yPosition += ySpeed;
-        xPosition +=2;
-
-        // check if it has hit the ground
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        
+        
+        xSpeed +=0;
+        xPosition += xSpeed;
+        
+        //abajo
+        if(yPosition >= (abajo-diameter))  {
+            yPosition = (int)(abajo - diameter);
+            ySpeed = -ySpeed ; 
         }
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        //arriba
+         if (yPosition <= (arriba) ) {
+            yPosition = (int)(arriba + diameter);
+            ySpeed = -ySpeed ; 
         }
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        //izquierda
+        if(xPosition >= (izquierda) && ySpeed > 0) {
+            xPosition = (int)(izquierda - diameter);
+            ySpeed = -ySpeed; 
         }
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        //derecha
+         if(xPosition >= (derecha-diameter) && ySpeed > 0) {
+            xPosition = (int)(derecha - diameter);
+            ySpeed = -ySpeed ; 
         }
-        // draw again at new position
+        //         // draw again at new position
         draw();
     }
 
