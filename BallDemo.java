@@ -80,7 +80,10 @@ public class BallDemo
         myCanvas.setVisible(true);
 
         // draw the ground
-        myCanvas.drawLine(50, ground, 550, ground);
+        myCanvas.drawLine(50, 400, 550, 400);
+        myCanvas.drawLine(50, 400, 50, 0);
+        myCanvas.drawLine(550, 0, 50, 0);
+        myCanvas.drawLine(550, 0, 550, 400);
         //array que guarda las bolas
         ArrayList<BoxBall> arrayBolas = new ArrayList<>();
 
@@ -116,4 +119,5 @@ public class BallDemo
             }
         }
     }
+    
 }

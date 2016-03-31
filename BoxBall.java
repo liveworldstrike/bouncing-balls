@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
 
-
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -33,7 +32,7 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall (int xPos, int yPos, int ballDiameter, Color ballColor,
-                         int groundPos, Canvas drawingCanvas)
+    int groundPos, Canvas drawingCanvas)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -77,10 +76,21 @@ public class BoxBall
             yPosition = (int)(groundPosition - diameter);
             ySpeed = -ySpeed + ballDegradation; 
         }
-
+        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
+            yPosition = (int)(groundPosition - diameter);
+            ySpeed = -ySpeed + ballDegradation; 
+        }
+        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
+            yPosition = (int)(groundPosition - diameter);
+            ySpeed = -ySpeed + ballDegradation; 
+        }
+        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
+            yPosition = (int)(groundPosition - diameter);
+            ySpeed = -ySpeed + ballDegradation; 
+        }
         // draw again at new position
         draw();
-    }    
+    }
 
     /**
      * return the horizontal position of this ball
